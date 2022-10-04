@@ -7,11 +7,11 @@ For this project, we decided to look at various foreign exchange rates compared 
   * Visual 3: a bar chart showing the dollar versus 10 other currencies at a specific moment in time.
 
 As has been reported lately, we expect to see the dollar strengthen as we get closer to the present.
-
+---
 Task :
-*Web Page Development and Flask API - Doug
-*Time series chart showing the dollar versus 10 other currencies - Chris
-*Bubble chart showing the dollar versus 10 other currencies by value and location -Degi
-*Bar chart showing the dollar versus 10 other currencies at a specific moment in time - Henry
+* Web Page Development and Flask API - Doug
+* Time series chart showing the dollar versus 10 other currencies - Chris
+* Bubble chart showing the dollar versus 10 other currencies by value and location -Degi
+* Bar chart showing the dollar versus 10 other currencies at a specific moment in time - Henry
 
 `Drop down Selection:` Jan 1 and July 1 of each year from 2000 to 2022
