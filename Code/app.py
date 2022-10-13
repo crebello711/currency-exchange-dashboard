@@ -56,7 +56,7 @@ def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:<br/>"
-        f"/api/v1.0/all_rates<br/>"
+        f"/api/v1.0/all_ratescd <br/>"
         f"/api/v1.0/cad<br/>"
     )
 
@@ -89,7 +89,7 @@ def exhcange_rates():
     # for row in results:
     #     all_rates[str(row)] = list(np.ravel(row))
 
-    return jsonify(results)
+    return results
 
 @app.route("/api/v1.0/cad")
 def cad():
