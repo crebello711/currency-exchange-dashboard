@@ -19,17 +19,20 @@ Base = declarative_base()
 class ExchangeRates(Base):
     __tablename__ = 'exchange_rates'
 
-    Date = Column(Date, primary_key=True)
-    AUD = Column(String)
-    CAD = Column(String)
-    EUR = Column(String)
-    JPY = Column(String)
-    NZD = Column(String)
-    NOK = Column(String)
-    SEK = Column(String)
-    CHF = Column(String)
-    GBP = Column(String)
-    USD = Column(String)
+    id = Column(Integer, primary_key=True)
+    date = Column(String)
+    month = Column(Integer)
+    year = Column(Integer)
+    aud = Column(Float)
+    cad = Column(Float)
+    eur = Column(Float)
+    jpy = Column(Float)
+    nzd = Column(Float)
+    nok = Column(Float)
+    sek = Column(Float)
+    chf = Column(Float)
+    gbp = Column(Float)
+    usd = Column(Float)
 
 # produce relationships
 Base.metadata.create_all(engine)
@@ -56,29 +59,32 @@ def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:<br/>"
-        f"/api/v1.0/all_ratescd <br/>"
+        f"/api/v1.0/by_date<br/>"
         f"/api/v1.0/cad<br/>"
     )
 
 
-@app.route("/api/v1.0/all_rates")
+@app.route("/api/v1.0/by_date")
 def exhcange_rates():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
     """Return a dictionary of all exhcange rates"""
     # Query all passengers
-    results = session.query(ExchangeRates.Date,
-                            ExchangeRates.AUD,
-                            ExchangeRates.CAD,
-                            ExchangeRates.EUR,
-                            ExchangeRates.JPY,
-                            ExchangeRates.NZD,
-                            ExchangeRates.NOK,
-                            ExchangeRates.SEK,
-                            ExchangeRates.CHF,
-                            ExchangeRates.GBP,
-                            ExchangeRates.USD).all()
+    results = session.query(ExchangeRates.id,
+                            ExchangeRates.date,
+                            ExchangeRates.month,
+                            ExchangeRates.year,
+                            ExchangeRates.aud,
+                            ExchangeRates.cad,
+                            ExchangeRates.eur,
+                            ExchangeRates.jpy,
+                            ExchangeRates.nzd,
+                            ExchangeRates.nok,
+                            ExchangeRates.sek,
+                            ExchangeRates.chf,
+                            ExchangeRates.gbp,
+                            ExchangeRates.usd).all()
 
     session.close()
 
