@@ -1,0 +1,45 @@
+const base_url = "http://127.0.0.1:5000/api/v1.0/"
+const bydate_url = "http://127.0.0.1:5000/api/v1.0/by_date"
+
+function init() {
+  let dropDownMenu = d3.select("#selDataset");
+
+  d3.json(bydate_url).then((data) => {
+    let dates = data.date;
+    console/log(data.date);
+    dates.forEach((date) => {
+      dropDownMenu.append("option").text(date).property("value",date)
+    });
+
+    let initDate = dates[0];
+    buildBar(initDate);
+    buildBubble(initDate);
+    buildTimeSeries();
+  });
+};
+
+function buildBar(date) { 
+  d3.json(bydate_url).then((data) => {
+  
+    Plotly.newPlot("bar", data1, layout1);  
+  });
+};
+
+function buildBubble(date) {
+  d3.json(bydate_url).then((data) => {
+
+    Plotly.newPlot("bubble",data2,layout2);
+  });
+};
+
+function buildTimeSeries() {
+
+};
+
+function optionChanged(date) {
+  buildBar(date);
+  buildBubble(date);
+};
+
+
+init();
