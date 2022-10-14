@@ -28,7 +28,7 @@ function buildBar(date) {
 function buildBubble(date) {
   d3.json(bydate_url).then((data) => {
 
-    Plotly.newPlot("bubble",data2,layout2);
+    // Plotly.newPlot("bubble",data2,layout2);
   });
 };
 

@@ -63,6 +63,7 @@ def welcome():
         f"Available Routes:<br/>"
         f"/api/v1.0/by_date<br/>"
         f"/api/v1.0/data<br/>"
+        f"/api/v1.0/time-series<br/>"
         f"/api/v1.0/cad<br/>"
     )
 
@@ -143,14 +144,71 @@ def data_json():
         result_dict["usd"] = results[i][13]
         results_tuple.append(result_dict)
 
-    # print(results)
-    
-    # all_rates = {}
-    # # Convert list of rows into dict
-    # for row in results:
-    #     all_rates[str(row)] = list(np.ravel(row))
-
     return jsonify(results_tuple)
+
+@app.route("/api/v1.0/time-series")
+def time_series_data_json():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    #"""Return a dictionary of all exhcange rates"""
+    # Query all passengers
+    results = session.query(ExchangeRates.id,
+                            ExchangeRates.date,
+                            ExchangeRates.month,
+                            ExchangeRates.year,
+                            ExchangeRates.aud,
+                            ExchangeRates.cad,
+                            ExchangeRates.eur,
+                            ExchangeRates.jpy,
+                            ExchangeRates.nzd,
+                            ExchangeRates.nok,
+                            ExchangeRates.sek,
+                            ExchangeRates.chf,
+                            ExchangeRates.gbp,
+                            ExchangeRates.usd).all()
+
+    session.close()
+
+    results_dict = {}
+    date_list=[]
+    aud_list = []
+    cad_list = []
+    eur_list = []
+    jpy_list = []
+    nzd_list = []
+    nok_list = []
+    sek_list = []
+    chf_list = []
+    gbp_list = []
+    usd_list = []
+
+    for i in range(len(results)):
+        date_list.append(results[i][1])
+        aud_list.append(results[i][4])
+        cad_list.append(results[i][5])
+        eur_list.append(results[i][6])
+        jpy_list.append(results[i][7])
+        nzd_list.append(results[i][8])
+        nok_list.append(results[i][9])
+        sek_list.append(results[i][10])
+        chf_list.append(results[i][11])
+        gbp_list.append(results[i][12])
+        usd_list.append(results[i][13])
+
+    results_dict['date']=date_list
+    results_dict['aud']=aud_list
+    results_dict['cad']=cad_list
+    results_dict['eur']=eur_list
+    results_dict['jpy']=jpy_list
+    results_dict['nzd']=nzd_list
+    results_dict['nok']=nok_list
+    results_dict['sek']=sek_list
+    results_dict['chf']=chf_list
+    results_dict['gbp']=gbp_list
+    results_dict['usd']=usd_list   
+
+    return jsonify(results_dict)
 
 @app.route("/api/v1.0/cad")
 def cad():
