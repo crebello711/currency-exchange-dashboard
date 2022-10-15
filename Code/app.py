@@ -1,6 +1,7 @@
 import numpy as np
 
 import sqlalchemy
+import json
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
@@ -12,7 +13,7 @@ from flask_cors import CORS
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///../Data/exchange_rates.sqlite")
+engine = create_engine("sqlite:///./Data/exchange_rates.sqlite")
 
 # reflect an existing database into a new model
 Base = declarative_base()
@@ -92,14 +93,13 @@ def exhcange_rates():
 
     session.close()
 
-    # print(results)
     
-    # all_rates = {}
-    # # Convert list of rows into dict
-    # for row in results:
-    #     all_rates[str(row)] = list(np.ravel(row))
+    all_rates = []
+    # Convert list of rows into dict
+    for row in results:
+        all_rates.append(list(row))
 
-    return jsonify(results)
+    return jsonify(all_rates)
 
 @app.route("/api/v1.0/data")
 def data_json():
