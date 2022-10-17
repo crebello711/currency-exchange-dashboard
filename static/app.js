@@ -10,7 +10,7 @@ function init() {
     console.log(data[0]['date']);
     data.forEach((datum) => {
         day = datum.date.split("-")[2]
-        if (day == '01') {
+        if (day == '01' || day == '15') {
           dropDownMenu.append("option").text(datum.date).property("value", datum.date)
         }
         
