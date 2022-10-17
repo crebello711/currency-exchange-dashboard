@@ -1,6 +1,7 @@
 # currency-exchange-dashboard
 
 ![Barchart](output/BarChart.png)
+![Heatmap](output/Heatmap.png)
 
 
 For this project, we decided to look at various foreign exchange rates compared to the US dollar. We used data from (Open Exchange Rates)https://openexchangerates.org/ and https://www.imf.org/external/np/fin/data/param_rms_mth.aspx to create the accompanying visuals.
