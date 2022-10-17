@@ -243,7 +243,7 @@ function buildTimeSeries()
         var data = [aud, cad, eur, jpy, nzd, nok, sek, chf, cbp, usd];
 
         var layout = {
-            title: 'Averagr Exchange Currency Rate per Year [1998-2022]',
+            title: 'Average Exchange Currency Rate per Year [1998-2022]',
             xaxis: {
                 title: 'Year',
                 showgrid: false,
