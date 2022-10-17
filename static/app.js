@@ -9,7 +9,11 @@ function init() {
   {
     console.log(data[0]['date']);
     data.forEach((datum) => {
-        dropDownMenu.append("option").text(datum.date).property("value", datum.date)
+        day = datum.date.split("-")[2]
+        if (day == '01') {
+          dropDownMenu.append("option").text(datum.date).property("value", datum.date)
+        }
+        
     });
 
     let initDate = data[0]['date'];
@@ -191,6 +195,13 @@ function buildTimeSeries()
             name: 'Euro'
         };
 
+        var jpy = {
+          x: data_2[0],
+          y: data_2[4],
+          mode: 'lines+markers',
+          name: 'Japanese yen'
+      };
+
         var nzd = {
             x: data_2[0],
             y: data_2[5],
@@ -229,7 +240,7 @@ function buildTimeSeries()
             mode: 'lines+markers',
             name: 'U.S. dollar'
         };
-        var data = [aud, cad, eur, nzd, nok, sek, chf, cbp, usd];
+        var data = [aud, cad, eur, jpy, nzd, nok, sek, chf, cbp, usd];
 
         var layout = {
             title: 'Averagr Exchange Currency Rate per Year [1998-2022]',
