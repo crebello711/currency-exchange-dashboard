@@ -14,4 +14,4 @@ Task :
 * Bubble chart showing the dollar versus 9 other currencies by value and location -Degi
 * Bar chart showing the dollar versus 9 other currencies at a specific moment in time - Henry
 
-`Drop down Selection:` 1st and 15th of every month from Octoer 1998 to 2022
+`Drop down Selection:` 1st and 15th of every month from October 1998 to 2022
