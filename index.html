@@ -11,36 +11,63 @@
 
 <body>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Exchange Rates Dashboard</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h5>Select Date:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 jumbotron text-center">
+                <h1>Exchange Rates Dashboard</h1>
+                <p>Use the interactive charts below to explore the dataset</p>
+            </div>
         </div>
-        <!-- room for div beneath the dropdown menu here -->
-      </div>
-      <div class="col-md-10">
-        <div id="bar"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-          <div id="timeseries"></div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="well">
+                    <h5>Select Date:</h5>
+                    <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                </div>
+                <!-- room for div beneath the dropdown menu here -->
+            </div>
+            <div class="col-md-10">
+                <div id="bar"></div>
+            </div>
         </div>
-      </div>
-  </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="bubble"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="well">
+                    <h5>Select Country:</h5>
+                    <select id="selBox" onchange="optionChanged2(this.value)">
+                        <option value="AUD">AUD</option>
+                        <option value="CAD">CAD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="NZD">JPY</option>
+                        <option value="NZD">NZD</option>
+                        <option value="NZD">NOK</option>
+                        <option value="NZD">SEK</option>
+                        <option value="NZD">CHF</option>
+                        <option value="NZD">GBP</option>
+                        <option value="NZD">USD</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="timeseries"></div>
+            </div>
+        </div>
+        <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+        
+
+    </div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
