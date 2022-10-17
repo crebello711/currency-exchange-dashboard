@@ -9,7 +9,11 @@ function init() {
   {
     console.log(data[0]['date']);
     data.forEach((datum) => {
-        dropDownMenu.append("option").text(datum.date).property("value", datum.date)
+        day = datum.date.split("-")[2]
+        if (day == '01' || day == '15') {
+          dropDownMenu.append("option").text(datum.date).property("value", datum.date)
+        }
+        
     });
 
     let initDate = data[0]['date'];
@@ -41,13 +45,12 @@ function buildBar(date) {
 
     var final_data = [
       {
-        x: ['aud', 'cad', 'chf', 'eur', 'gbp', 'jpy', 'nok', 'nzd', 'sek', 'usd'],
+        x: ['aud', 'cad', 'chf', 'eur', 'gbp','nok', 'nzd', 'sek', 'usd'],
         y: [date_data['aud'], 
         date_data['cad'], 
         date_data['chf'], 
         date_data['eur'], 
         date_data['gbp'],
-        date_data['jpy'], 
         date_data['nok'], 
         date_data['nzd'], 
         date_data['sek'],
@@ -94,11 +97,10 @@ function buildBubble(date) {
       'Switzerlland',
       'Belgium',
       'United Kingdom',
-      'Japan',
+      'Norway',
       'New Zealand',
       'Sweden',
       'USA',
-      'Norway'
     ];
 
     data_list = [date_data['aud'], 
@@ -106,7 +108,6 @@ function buildBubble(date) {
       date_data['chf'], 
       date_data['eur'], 
       date_data['gbp'],
-      date_data['jpy'], 
       date_data['nok'], 
       date_data['nzd'], 
       date_data['sek'],
@@ -195,11 +196,12 @@ function buildTimeSeries()
         };
 
         var jpy = {
-            x: data_2[0],
-            y: data_2[4],
-            mode: 'lines+markers',
-            name: 'Japanese yen'
-        };
+          x: data_2[0],
+          y: data_2[4],
+          mode: 'lines+markers',
+          name: 'Japanese yen'
+      };
+
         var nzd = {
             x: data_2[0],
             y: data_2[5],
@@ -241,7 +243,7 @@ function buildTimeSeries()
         var data = [aud, cad, eur, jpy, nzd, nok, sek, chf, cbp, usd];
 
         var layout = {
-            title: 'Averagr Exchange Currency Rate per Year [1998-2022]',
+            title: 'Average Exchange Currency Rate per Year [1998-2022]',
             xaxis: {
                 title: 'Year',
                 showgrid: false,
