@@ -41,13 +41,12 @@ function buildBar(date) {
 
     var final_data = [
       {
-        x: ['aud', 'cad', 'chf', 'eur', 'gbp', 'jpy', 'nok', 'nzd', 'sek', 'usd'],
+        x: ['aud', 'cad', 'chf', 'eur', 'gbp','nok', 'nzd', 'sek', 'usd'],
         y: [date_data['aud'], 
         date_data['cad'], 
         date_data['chf'], 
         date_data['eur'], 
         date_data['gbp'],
-        date_data['jpy'], 
         date_data['nok'], 
         date_data['nzd'], 
         date_data['sek'],
@@ -94,11 +93,10 @@ function buildBubble(date) {
       'Switzerlland',
       'Belgium',
       'United Kingdom',
-      'Japan',
+      'Norway',
       'New Zealand',
       'Sweden',
       'USA',
-      'Norway'
     ];
 
     data_list = [date_data['aud'], 
@@ -106,7 +104,6 @@ function buildBubble(date) {
       date_data['chf'], 
       date_data['eur'], 
       date_data['gbp'],
-      date_data['jpy'], 
       date_data['nok'], 
       date_data['nzd'], 
       date_data['sek'],
@@ -194,12 +191,6 @@ function buildTimeSeries()
             name: 'Euro'
         };
 
-        var jpy = {
-            x: data_2[0],
-            y: data_2[4],
-            mode: 'lines+markers',
-            name: 'Japanese yen'
-        };
         var nzd = {
             x: data_2[0],
             y: data_2[5],
@@ -238,7 +229,7 @@ function buildTimeSeries()
             mode: 'lines+markers',
             name: 'U.S. dollar'
         };
-        var data = [aud, cad, eur, jpy, nzd, nok, sek, chf, cbp, usd];
+        var data = [aud, cad, eur, nzd, nok, sek, chf, cbp, usd];
 
         var layout = {
             title: 'Averagr Exchange Currency Rate per Year [1998-2022]',
