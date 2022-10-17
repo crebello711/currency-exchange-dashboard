@@ -1,17 +1,20 @@
 import numpy as np
 
 import sqlalchemy
+import json
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy import Date, Float, func
 from flask import Flask, jsonify
 from flask_cors import CORS
+import os
 
 
 #################################################
 # Database Setup
 #################################################
+
 engine = create_engine("sqlite:///../Data/exchange_rates.sqlite")
 engine2 = create_engine("sqlite:///../Data/avgCurnCountry.sqlite")
 connection = engine2.connect()
@@ -20,6 +23,10 @@ resultColumn =["y1998", "y1999","y2000", "y2001", "y2002", "y2003",
                 "y2004", "y2005", "y2006", "y2007","y2008","y2009", 
                 "y2010", "y2011", "y2012", "y2013","y2014", "y2015", 
                 "y2016", "y2017", "y2018", "y2019", "y2020", "y2021","y2022"]
+
+# rel_path = os.path.relpath("Data/exchange_rates.sqlite","Code")
+# print(rel_path)
+# engine = create_engine("sqlite:///"+ rel_path)
 
 # reflect an existing database into a new model
 Base = declarative_base()
@@ -131,14 +138,13 @@ def exhcange_rates():
 
     session.close()
 
-    # print(results)
     
-    # all_rates = {}
-    # # Convert list of rows into dict
-    # for row in results:
-    #     all_rates[str(row)] = list(np.ravel(row))
+    all_rates = []
+    # Convert list of rows into dict
+    for row in results:
+        all_rates.append(list(row))
 
-    return jsonify(results)
+    return jsonify(all_rates)
 
 @app.route("/api/v1.0/data")
 def data_json():

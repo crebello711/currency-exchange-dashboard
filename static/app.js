@@ -26,9 +26,55 @@ function init() {
 };
 /////////////////////////////////////////////////////////////////////////////////
 function buildBar(date) { 
-  d3.json(bydate_url).then((data) => {
+  d3.json(data_url).then((data) => {
+    let date_data = {}
+    data.forEach((datum) => {
+      if (datum.date == date) {
+        date_data = datum
+      }
+    })
+    console.log(date_data)
+
   
-    //Plotly.newPlot("bar", data, layout1);  
+
+  
+
+    var final_data = [
+      {
+        x: ['aud', 'cad', 'chf', 'eur', 'gbp', 'jpy', 'nok', 'nzd', 'sek', 'usd'],
+        y: [date_data['aud'], 
+        date_data['cad'], 
+        date_data['chf'], 
+        date_data['eur'], 
+        date_data['gbp'],
+        date_data['jpy'], 
+        date_data['nok'], 
+        date_data['nzd'], 
+        date_data['sek'],
+        date_data['usd']],
+        type: 'bar'
+      }
+    ];
+
+    var layout = {
+      title: {
+        text:'US Dollar vs Other Currencies',
+      },
+      xaxis: {
+        title: {
+          text: 'Currency',
+        },
+      },
+      yaxis: {
+        title: {
+          text: 'Price in USD',
+        }
+      }
+    };
+    
+    Plotly.newPlot('bar', final_data, layout);
+
+
   });
 };
 //////////////////////////////////////////////////////////////////////////////////
