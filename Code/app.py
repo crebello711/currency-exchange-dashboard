@@ -8,12 +8,15 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy import Date, Float, func
 from flask import Flask, jsonify
 from flask_cors import CORS
+import os
 
 
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///./Data/exchange_rates.sqlite")
+rel_path = os.path.relpath("Data/exchange_rates.sqlite","Code")
+print(rel_path)
+engine = create_engine("sqlite:///"+ rel_path)
 
 # reflect an existing database into a new model
 Base = declarative_base()
