@@ -177,15 +177,19 @@ def data_json():
         result_dict["date"] = results[i][1]
         result_dict["month"] = results[i][2]
         result_dict["year"] = results[i][3]
-        result_dict["aud"] = results[i][4]
+        if (results[i][4] != None) :
+            result_dict["aud"] = 1 / results[i][4]
         result_dict["cad"] = results[i][5]
-        result_dict["eur"] = results[i][6]
+        if (results[i][6] != None) :
+            result_dict["eur"] = 1 / results[i][6]
         result_dict["jpy"] = results[i][7]
-        result_dict["nzd"] = results[i][8]
+        if (results[i][8] != None) :
+            result_dict["nzd"] = 1 / results[i][8]
         result_dict["nok"] = results[i][9]
         result_dict["sek"] = results[i][10]
         result_dict["chf"] = results[i][11]
-        result_dict["gbp"] = results[i][12]
+        if (results[i][12] != None) :
+            result_dict["gbp"] = 1/ results[i][12]
         result_dict["usd"] = results[i][13]
         results_tuple.append(result_dict)
 
@@ -452,15 +456,15 @@ def time_series_data_json():
                             avgCurrency.y2022).filter(avgCurrency.country == "USD").all()
     session.close()
     
-    all_AUD = list(np.ravel(results_AUD))
+    all_AUD = list(np.ravel(np.reciprocal(results_AUD)))
     all_CAD = list(np.ravel(results_CAD))
-    all_EUR = list(np.ravel(results_EUR))
+    all_EUR = list(np.ravel(np.reciprocal(results_EUR)))
     all_JPY = list(np.ravel(results_JPY))
-    all_NZD = list(np.ravel(results_NZD))
+    all_NZD = list(np.ravel(np.reciprocal(results_NZD)))
     all_NOK = list(np.ravel(results_NOK))
     all_SEK = list(np.ravel(results_SEK))
     all_CHF = list(np.ravel(results_CHF))
-    all_GBP = list(np.ravel(results_GBP))
+    all_GBP = list(np.ravel(np.reciprocal(results_GBP)))
     all_USD = list(np.ravel(results_USD))
 
 
