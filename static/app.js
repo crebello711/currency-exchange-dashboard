@@ -68,8 +68,88 @@ function buildBar(date) {
 };
 
 function buildBubble(date) {
-  d3.json(bydate_url).then((data) => {
+  d3.json(data_url).then((data) => {
+    let date_data = {}
+    data.forEach((datum) => {
+      if (datum.date == date) {
+        date_data = datum
+      }
+    })
+    console.log(date_data)
 
+    locations_list = [
+      'Australia',
+      'Canada',
+      'Switzerlland',
+      'Belgium',
+      'United Kingdom',
+      'Japan',
+      'New Zealand',
+      'Sweden',
+      'USA',
+      'Norway'
+    ];
+
+    data_list = [date_data['aud'], 
+      date_data['cad'], 
+      date_data['chf'], 
+      date_data['eur'], 
+      date_data['gbp'],
+      date_data['jpy'], 
+      date_data['nok'], 
+      date_data['nzd'], 
+      date_data['sek'],
+      date_data['usd']
+    ];
+
+    
+
+    var data = [{
+      type: 'choropleth',
+      locationmode: 'country names',
+      locations: locations_list,
+      z: data_list,
+      text: locations_list,
+      autocolorscale: true
+  }];
+
+  var layout2 = {
+    title: 'US dollar vs. other currencies',
+    geo: {
+        projection: {
+            type: 'robinson'
+        }
+    }
+  };
+//     var bubble = document.getElementById("bubble-chart");
+ 
+// var traceA = {
+//   type: "scatter",
+//   mode: "markers",
+//   x: ['aud', 'cad', 'chf', 'eur', 'gbp', 'jpy', 'nok', 'nzd', 'sek', 'usd'],
+//   y: [date_data['aud'], 
+//   date_data['cad'], 
+//   date_data['chf'], 
+//   date_data['eur'], 
+//   date_data['gbp'],
+//   date_data['jpy'], 
+//   date_data['nok'], 
+//   date_data['nzd'], 
+//   date_data['sek'],
+//   date_data['usd']],
+//   marker: {
+//     size: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+//     sizemode: 'area'
+//   }
+// };
+ 
+// var data = [traceA];
+ 
+// var layout2 = {
+//   title: "Dollar vs. other currencies"
+// };
+ 
+    Plotly.newPlot("bubble", data, layout2);
     // Plotly.newPlot("bubble",data2,layout2);
   });
 };
