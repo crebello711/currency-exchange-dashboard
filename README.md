@@ -14,7 +14,7 @@ As has been reported lately, we expect to see the dollar strengthen as we get cl
 ---
 Task :
 * Web Page Development and Flask API - Doug
-* Time series chart showing the dollar versus 9 other currencies - Chris
+* Line chart showing the dollar versus 9 other currencies - Chris
 * Heatmap showing the dollar versus 9 other currencies by value and location -Degi
 * Bar chart showing the dollar versus 9 other currencies at a specific moment in time - Henry
 
