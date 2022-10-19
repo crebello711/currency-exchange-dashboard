@@ -11,6 +11,9 @@ For this project, we decided to look at various foreign exchange rates compared 
   * Visual 3: a bar chart showing the dollar versus 9 other currencies at a specific moment in time.
 
 As has been reported lately, we expect to see the dollar strengthen as we get closer to the present.
+
+Instructions: run Flask server by executing Code/app.py with Python, then open index.html in a browser winder.
+
 ---
 Task :
 * Web Page Development and Flask API - Doug
